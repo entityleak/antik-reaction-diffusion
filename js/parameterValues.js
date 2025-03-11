@@ -12,7 +12,7 @@ export default {
   seed: {
     type: 0,
     circle: {
-      radius: 100
+      radius: 50
     },
     square: {
       width: 200,

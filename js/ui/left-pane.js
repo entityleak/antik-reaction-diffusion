@@ -202,6 +202,7 @@ function setupStyleMapFolder() {
       .on('change', (value) => {
         simulationUniforms.styleMapParameters.value.x = value;
       });
+    simulationUniforms.styleMapParameters.value.x = parameterMetadata.styleMapInitialOverride.f.initial;
 
     styleMapFolder.addInput(parameterValues.styleMap, 'k', {
       label: 'Kill (#2)',
@@ -213,6 +214,7 @@ function setupStyleMapFolder() {
       .on('change', (value) => {
         simulationUniforms.styleMapParameters.value.y = value;
       });
+    simulationUniforms.styleMapParameters.value.y = parameterMetadata.styleMapInitialOverride.k.initial;
 
     styleMapFolder.addInput(parameterValues.styleMap, 'dA', {
       label: 'dA (#2)',
@@ -224,6 +226,7 @@ function setupStyleMapFolder() {
       .on('change', (value) => {
         simulationUniforms.styleMapParameters.value.z = value;
       });
+    simulationUniforms.styleMapParameters.value.z = parameterMetadata.styleMapInitialOverride.dA.initial;
 
     styleMapFolder.addInput(parameterValues.styleMap, 'dB', {
       label: 'dB (#2)',
@@ -235,8 +238,9 @@ function setupStyleMapFolder() {
       .on('change', (value) => {
         simulationUniforms.styleMapParameters.value.w = value;
       });
+    simulationUniforms.styleMapParameters.value.w = parameterMetadata.styleMapInitialOverride.dB.initial;
 
-      styleMapFolder.addSeparator();
+    styleMapFolder.addSeparator();
 
     /*
     // ANIMATION ----------------------------------------------------------------------

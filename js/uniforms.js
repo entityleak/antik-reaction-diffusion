@@ -24,7 +24,7 @@ export let simulationUniforms = {
   },
   brushRadius: {
     type: "f",
-    value: 10.0
+    value: 5.0
   },
   styleMapTexture: {
     type: "t",
@@ -40,7 +40,7 @@ export let simulationUniforms = {
   },
   styleMapParameters: {
     type: "v4",
-    value: new THREE.Vector4(parameterValues.f, parameterValues.k, parameterValues.dA, parameterValues.dB)
+    value: new THREE.Vector4(parameterValues.styleMap.f, parameterValues.styleMap.k, parameterValues.styleMap.dA, parameterValues.styleMap.dB)
   },
   bias: {
     type: 'vec2',
