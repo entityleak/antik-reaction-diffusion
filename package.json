@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "Grid-based process that generates complex and dynamic patterns based the interactions of two chemicals as they _diffuse_ through a medium. At every location on the grid these chemicals (usually referred to as `A` and `B`) have a chance of causing a _reaction_ that converts chemicals of one type to another based on their relative concentrations at that location.",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack-dev-server",
     "build": "webpack --mode production",
-    "vercel-build": "npm run build"
+    "vercel-build": "NODE_OPTIONS='--openssl-legacy-provider' npm run build"
   },
   "repository": {
     "type": "git",
