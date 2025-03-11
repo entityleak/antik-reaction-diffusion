@@ -2,7 +2,6 @@
   "version": 2,
   "buildCommand": "NODE_OPTIONS='--openssl-legacy-provider' npm run build",
   "outputDirectory": "dist",
-  "framework": "nodejs",
   "routes": [
     {
       "src": "/(.*)",
