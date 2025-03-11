@@ -7,7 +7,6 @@ import { setupUI } from './js/ui';
 import { setupMap } from './js/map';
 import { setupKeyboard } from './js/keyboard';
 import { setupMouse } from './js/mouse';
-import { setupMIDI } from './js/midi';
 
 import globals from './js/globals';
 import { simulationUniforms, displayUniforms } from './js/uniforms';
@@ -20,7 +19,6 @@ setupUI();                  // set up the Tweakpane UI
 setupMap();                 // set up the live parameter map picker
 setupKeyboard();            // set up keyboard commands
 setupMouse();               // set up mouse controls
-setupMIDI();                // set up MIDI mappings
 update();                   // kick off the main render loop
 
 //==============================================================
