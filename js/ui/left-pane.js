@@ -63,7 +63,7 @@ function loadStyleMap(file) {
       styleMapPreviewImage = document.createElement('img');
       styleMapPreviewImageContainer.appendChild(styleMapPreviewImage);
 
-      document.body.appendChild(styleMapPreviewImageContainer);
+      paneContainer.appendChild(styleMapPreviewImageContainer);
 
     // If the container has been set up previously, that means the user has probably loaded a new image, so we just need to make sure the container is visible.
     } else {

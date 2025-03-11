@@ -2,7 +2,7 @@ import { setupRightPane, rebuildRightPane, refreshRightPane, hideRightPane, show
 import { setupLeftPane, rebuildLeftPane, refreshLeftPane, hideLeftPane, showLeftPane } from "./ui/left-pane";
 
 let isVisible = true;
-let statsContainerEl, cornerLinksEl;
+let statsContainerEl, cornerLinksEl, styleMapPreview;
 
 export function setupUI() {
   setupRightPane();
@@ -10,6 +10,8 @@ export function setupUI() {
 
   statsContainerEl = document.querySelector('#stats-container');
   cornerLinksEl = document.querySelector('.corner-links');
+
+  toggleUI();
 }
 
   export function rebuildUI() {
