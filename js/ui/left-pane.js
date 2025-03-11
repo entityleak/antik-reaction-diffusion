@@ -10,6 +10,8 @@ import Tweakpane from 'tweakpane';
 import parameterValues from '../parameterValues';
 import { simulationUniforms } from '../uniforms';
 import parameterMetadata from '../parameterMetadata';
+import { drawFirstFrame } from '../firstFrame';
+
 
 let pane, paneContainer,
     styleMapChooser, styleMapPreviewImageContainer, styleMapPreviewImage;
@@ -23,45 +25,7 @@ export function setupLeftPane() {
         return;
       }
 
-      let reader = new FileReader();
-      reader.onload = function() {
-        // Create the DOM elements needed for the floating thumbnail, if they aren't already set up
-        if(styleMapPreviewImageContainer === undefined) {
-          styleMapPreviewImageContainer = document.createElement('div');
-          styleMapPreviewImageContainer.setAttribute('id', 'style-map-preview-image-container');
-
-          styleMapPreviewImage = document.createElement('img');
-          styleMapPreviewImageContainer.appendChild(styleMapPreviewImage);
-
-          document.body.appendChild(styleMapPreviewImageContainer);
-
-        // If the container has been set up previously, that means the user has probably loaded a new image, so we just need to make sure the container is visible.
-        } else {
-          styleMapPreviewImageContainer.style.display = 'block';
-        }
-
-        // Load the image and pass it to the simulation shader as a texture uniform
-        const loader = new THREE.TextureLoader();
-        simulationUniforms.styleMapTexture.value = loader.load(reader.result);
-
-        // Also pass the width and height of the image into the shader as uniforms
-        const img = new Image();
-        img.onload = function() {
-          simulationUniforms.styleMapResolution.value = new THREE.Vector2(
-            parseFloat(img.width),
-            parseFloat(img.height)
-          );
-        };
-        img.src = reader.result;
-
-        // Visually display the image as a thumbnail next to the UI
-        styleMapPreviewImage.setAttribute('src', reader.result);
-
-        parameterValues.styleMap.imageLoaded = true;
-        rebuildLeftPane();
-      };
-
-      reader.readAsDataURL(e.target.files[0]);
+      loadStyleMap(e.target.files[0]);
     });
   }
 
@@ -79,26 +43,91 @@ export function setupLeftPane() {
   setupStyleMapFolder();
   setupBiasFolder();
 
+  // Only autoload if no image is currently loaded
+  if (!parameterValues.styleMap.imageLoaded) {
+    autoloadStyleMap('images/style-maps/default.png');
+  }
+
   // TODO: setupFlowFolder();
   // TODO: setupScaleFolder();
 }
 
-  export function rebuildLeftPane() {
-    pane.dispose();
-    setupLeftPane();
-  }
+function loadStyleMap(file) {
+  let reader = new FileReader();
+  reader.onload = function() {
+    // Create the DOM elements needed for the floating thumbnail, if they aren't already set up
+    if(styleMapPreviewImageContainer === undefined) {
+      styleMapPreviewImageContainer = document.createElement('div');
+      styleMapPreviewImageContainer.setAttribute('id', 'style-map-preview-image-container');
 
-  export function refreshLeftPane() {
-    pane.refresh();
-  }
+      styleMapPreviewImage = document.createElement('img');
+      styleMapPreviewImageContainer.appendChild(styleMapPreviewImage);
 
-  export function hideLeftPane() {
-    pane.containerElem_.style.display = 'none';
-  }
+      document.body.appendChild(styleMapPreviewImageContainer);
 
-  export function showLeftPane() {
-    pane.containerElem_.style.display = 'block';
-  }
+    // If the container has been set up previously, that means the user has probably loaded a new image, so we just need to make sure the container is visible.
+    } else {
+      styleMapPreviewImageContainer.style.display = 'block';
+    }
+
+    // Load the image and pass it to the simulation shader as a texture uniform
+    const loader = new THREE.TextureLoader();
+    simulationUniforms.styleMapTexture.value = loader.load(reader.result);
+
+    // Also pass the width and height of the image into the shader as uniforms
+    const img = new Image();
+    img.onload = function() {
+      simulationUniforms.styleMapResolution.value = new THREE.Vector2(
+        parseFloat(img.width),
+        parseFloat(img.height)
+      );
+    };
+    img.src = reader.result;
+
+    // Visually display the image as a thumbnail next to the UI
+    styleMapPreviewImage.setAttribute('src', reader.result);
+
+    parameterValues.styleMap.imageLoaded = true;
+    rebuildLeftPane();
+  };
+
+  reader.readAsDataURL(file);
+}
+
+export function autoloadStyleMap(imageUrl) {
+  // Create a fetch request to get the image
+  fetch(imageUrl)
+    .then(response => response.blob())
+    .then(blob => {
+      // Create a File object from the blob
+      const file = new File([blob], 'style-map.png', { type: 'image/png' });
+      
+      // Use the existing loadStyleMap function
+      loadStyleMap(file);
+      drawFirstFrame();
+      console.log('default image loaded');
+    })
+    .catch(error => {
+      console.error('Error autoloading style map:', error);
+    });
+}
+
+export function rebuildLeftPane() {
+  pane.dispose();
+  setupLeftPane();
+}
+
+export function refreshLeftPane() {
+  pane.refresh();
+}
+
+export function hideLeftPane() {
+  pane.containerElem_.style.display = 'none';
+}
+
+export function showLeftPane() {
+  pane.containerElem_.style.display = 'block';
+}
 
 //===========================================================
 //  STYLE MAP
