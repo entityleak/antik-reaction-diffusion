@@ -7,7 +7,7 @@ export default {
   k: {
     min: 0.03,
     max: 0.07,
-    initial: 0.0605
+    initial: 0.0610
   },
   dA: {
     min: 0.2,
@@ -17,7 +17,7 @@ export default {
   dB: {
     min: 0.01,
     max: 0.8,
-    initial: .1139
+    initial: .1088
   },
   timestep: {
     min: 0.0,
@@ -28,17 +28,17 @@ export default {
     width: {
       min: 0,
       max: window.innerWidth,
-      initial: 1400
+      initial: window.innerWidth
     },
     height: {
       min: 0,
       max: window.innerHeight,
-      initial: 900
+      initial: window.innerHeight
     },
     scale: {
       min: .01,
       max: 3,
-      initial: 0.6
+      initial: 0.5
     }
   },
   bias: {
@@ -60,7 +60,7 @@ export default {
     k: {
       min: 0.03,
       max: 0.07,
-      initial: 0.0595
+      initial: 0.0575
     },
     dA: {
       min: 0.2,
