@@ -2,22 +2,22 @@ export default {
   f: {
     min: 0.0,
     max: 0.1,
-    initial: 0.054
+    initial: 0.0820
   },
   k: {
     min: 0.03,
     max: 0.07,
-    initial: 0.062
+    initial: 0.0605
   },
   dA: {
     min: 0.2,
     max: 0.25,
-    initial: .2097
+    initial: .2072
   },
   dB: {
     min: 0.01,
     max: 0.8,
-    initial: .105
+    initial: .1139
   },
   timestep: {
     min: 0.0,
@@ -28,7 +28,7 @@ export default {
     width: {
       min: 0,
       max: window.innerWidth,
-      initial: 900
+      initial: 1400
     },
     height: {
       min: 0,
@@ -38,7 +38,7 @@ export default {
     scale: {
       min: .01,
       max: 3,
-      initial: 1
+      initial: 0.8
     }
   },
   bias: {
@@ -50,5 +50,27 @@ export default {
       max: .5,
       initial: 0.0
     }
+  },
+  styleMapInitialOverride: {
+    f: {
+      min: 0.0,
+      max: 0.1,
+      initial: 0.0408
+    },
+    k: {
+      min: 0.03,
+      max: 0.07,
+      initial: 0.0595
+    },
+    dA: {
+      min: 0.2,
+      max: 0.25,
+      initial: .2097
+    },
+    dB: {
+      min: 0.01,
+      max: 0.8,
+      initial: .1050
+    },
   }
 };

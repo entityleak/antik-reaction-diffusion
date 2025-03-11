@@ -83,7 +83,7 @@ export let displayUniforms = {
   },
   renderingStyle: {
     type: "i",
-    value: 0
+    value: 7
   },
 
   // Gradient color stops - RGB channels represent real color values, but A channel is for B threshold

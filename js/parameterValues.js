@@ -84,10 +84,10 @@ export default {
       x: 0.0,
       y: 0.0
     },
-    f: parameterMetadata.f.initial,
-    k: parameterMetadata.k.initial,
-    dA: parameterMetadata.dA.initial,
-    dB: parameterMetadata.dB.initial,
+    f: parameterMetadata.styleMapInitialOverride.f.initial,
+    k: parameterMetadata.styleMapInitialOverride.k.initial,
+    dA: parameterMetadata.styleMapInitialOverride.dA.initial,
+    dB: parameterMetadata.styleMapInitialOverride.dB.initial,
     animation: {
       enabled: false,
       parameter: '',

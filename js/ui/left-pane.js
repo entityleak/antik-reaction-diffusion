@@ -100,7 +100,6 @@ export function setupLeftPane() {
     pane.containerElem_.style.display = 'block';
   }
 
-
 //===========================================================
 //  STYLE MAP
 //===========================================================
@@ -168,7 +167,7 @@ function setupStyleMapFolder() {
       label: 'Feed (#2)',
       min: parameterMetadata.f.min,
       max: parameterMetadata.f.max,
-      initial: parameterValues.f.value,
+      initial: parameterMetadata.styleMapInitialOverride.f.initial,
       step: .0001
     })
       .on('change', (value) => {
@@ -179,7 +178,7 @@ function setupStyleMapFolder() {
       label: 'Kill (#2)',
       min: parameterMetadata.k.min,
       max: parameterMetadata.k.max,
-      initial: parameterValues.k.value,
+      initial: parameterMetadata.styleMapInitialOverride.k.initial,
       step: .0001
     })
       .on('change', (value) => {
@@ -190,7 +189,7 @@ function setupStyleMapFolder() {
       label: 'dA (#2)',
       min: parameterMetadata.dA.min,
       max: parameterMetadata.dA.max,
-      initial: parameterValues.dA.value,
+      initial: parameterMetadata.styleMapInitialOverride.dA.initial,
       step: .0001
     })
       .on('change', (value) => {
@@ -201,7 +200,7 @@ function setupStyleMapFolder() {
       label: 'dB (#2)',
       min: parameterMetadata.dB.min,
       max: parameterMetadata.dB.max,
-      initial: parameterValues.dB.value,
+      initial: parameterMetadata.styleMapInitialOverride.dB.initial,
       step: .0001
     })
       .on('change', (value) => {
